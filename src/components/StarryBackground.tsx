@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import starrySky from "@/assets/starry-sky.jpg";
+import starrySky from "@/assets/sky.png";
 
 const StarryBackground = () => {
   return (

@@ -4,31 +4,38 @@ import type { Variants, Easing } from "framer-motion";
 const events = [
   {
     name: "Mehndi Ceremony",
-    date: "December 26, 2025",
+    date: "March 11, 2025",
     time: "4:00 PM",
     venue: "Bride's Residence",
     description: "An evening of henna, music, and celebration"
   },
   {
+    name: "Haldi Ceremony",
+    date: "March 13, 2025",
+    time: "11:00 AM",
+    venue: "Resort",
+    description: "A joyful ritual to bless the couple"
+  },
+  {
     name: "Sangeet Night",
-    date: "December 27, 2025",
+    date: "March 13, 2025",
     time: "7:00 PM",
-    venue: "Palace Banquet Hall",
-    description: "Dance, music, and joyous celebrations"
+    venue: "Resort Lawn",
+    description: "A night of dance and music with family and friends"
   },
   {
     name: "Wedding Ceremony",
-    date: "December 28, 2025",
-    time: "6:00 PM",
-    venue: "Royal Palace Gardens",
+    date: "March 14, 2025",
+    time: "2:00 PM",
+    venue: "Resort Lawn",
     description: "The sacred union of two souls"
   },
   {
     name: "Reception",
-    date: "December 29, 2025",
+    date: "March 14, 2025",
     time: "7:00 PM",
-    venue: "Grand Ballroom",
-    description: "A grand celebration with family and friends"
+    venue: "Resort's Hallroom",
+    description: "A casual dining celebration with family and friends"
   }
 ];
 

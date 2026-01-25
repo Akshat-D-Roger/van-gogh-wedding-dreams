@@ -50,7 +50,7 @@ const WeddingDetails = ({ delay = 0 }: WeddingDetailsProps) => {
         variants={itemVariants}
         className="font-display text-4xl md:text-5xl text-gradient-gold text-shadow-glow mb-2"
       >
-        Arjun
+        Shreya
       </motion.h2>
 
       <motion.p 
@@ -64,7 +64,7 @@ const WeddingDetails = ({ delay = 0 }: WeddingDetailsProps) => {
         variants={itemVariants}
         className="font-display text-4xl md:text-5xl text-gradient-gold text-shadow-glow mb-8"
       >
-        Priya
+        Parth
       </motion.h2>
 
       <motion.div variants={itemVariants} className="ornate-divider mx-auto max-w-xs mb-12" />
@@ -86,10 +86,10 @@ const WeddingDetails = ({ delay = 0 }: WeddingDetailsProps) => {
           Save the Date
         </p>
         <p className="font-display text-3xl md:text-4xl text-gradient-gold text-shadow-glow">
-          December 28, 2025
+          March 14, 2025
         </p>
         <p className="font-elegant text-foreground/70 text-lg mt-2">
-          Saturday • 6:00 PM Onwards
+          Friday • 11:00 AM Onwards
         </p>
       </motion.div>
 
@@ -102,11 +102,10 @@ const WeddingDetails = ({ delay = 0 }: WeddingDetailsProps) => {
           Venue
         </p>
         <p className="font-elegant text-foreground text-xl mb-1">
-          The Royal Palace Gardens
+          Savitri Resorts
         </p>
         <p className="font-elegant text-muted-foreground">
-          123 Heritage Lane<br />
-          Jaipur, Rajasthan
+          Pushka, Rajasthan
         </p>
       </motion.div>
 

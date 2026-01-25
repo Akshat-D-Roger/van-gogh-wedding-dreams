@@ -60,7 +60,7 @@ const RSVPSection = () => {
           With Love
         </p>
         <p className="font-display text-xl text-gradient-gold">
-          Arjun & Priya
+          Parth & Srishti
         </p>
       </motion.div>
 
