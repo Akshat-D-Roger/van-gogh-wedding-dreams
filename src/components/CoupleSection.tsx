@@ -50,33 +50,45 @@ const CoupleSection = () => {
             </motion.div>
 
             {/* Frame Container */}
-            <div className="relative w-[500px] h-[500px] flex items-center justify-center">
+            <div className="relative h-[60vh] max-h-[600px] aspect-[505/684] flex items-center justify-center">
 
-                {/* The Frame Image */}
+                {/* The Frame Image - Z-20 mainly to cover the edges of the photo */}
                 <img
                     src={frameImg}
                     alt="Frame"
-                    className="absolute inset-0 w-full h-full object-contain z-20 pointer-events-none drop-shadow-xl"
+                    className="absolute inset-0 w-full h-full object-fill z-20 pointer-events-none drop-shadow-2xl"
                 />
-                {/* The Couple Photo */}
-                {/* Adjust inset/padding to fit INSIDE the frame visually. 
-            Since I don't know the exact rim size, I'll guess ~15% padding. */}
-                <div className="absolute left-[19%] right-[19%] top-[16%] bottom-[16%] z-10 overflow-hidden bg-black/10">
+
+                {/* The Couple Photo - Z-10 Behind the frame */}
+                {/* We use specific insets to ensure the photo fills the "hole" but doesn't spill too far if the frame is irregular. */}
+                {/* Assuming a standard frame rim of ~10-15%. We make the photo slightly larger (inset-10) to ensure no gaps, relying on the frame to cover edges. */}
+                <div className="absolute inset-[13%] z-10 overflow-hidden bg-black/20">
                     <AnimatePresence mode="wait">
                         <motion.img
                             key={index}
                             src={images[index]}
                             alt="Couple"
-                            initial={{ opacity: 0, scale: 1.1 }}
+                            initial={{ opacity: 0, scale: 1.05 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0 }}
-                            transition={{ duration: 1 }}
+                            transition={{ duration: 1.2 }}
                             className="w-full h-full object-cover"
                         />
                     </AnimatePresence>
                 </div>
 
             </div>
+
+            {/* Hashtag */}
+            <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="mt-8 text-2xl sm:text-3xl font-elegant text-[#6D4C4C] z-10"
+            >
+                #SrishtiFoundHerPa(r)th
+            </motion.p>
 
         </section>
     );
