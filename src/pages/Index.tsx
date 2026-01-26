@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import StarryBackground from "@/components/StarryBackground";
 import PalaceSection from "@/components/PalaceSection";
-import WeddingDetails from "@/components/WeddingDetails";
 import EventsSection from "@/components/EventsSection";
+import SeeTheRoute from "@/components/SeeTheRoute";
+import CoupleSection from "@/components/CoupleSection";
 import RSVPSection from "@/components/RSVPSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-transparent overflow-x-hidden selection:bg-gold/30 selection:text-gold-light">
+    <div className="min-h-screen bg-transparent selection:bg-gold/30 selection:text-gold-light">
       {/* GLOBAL STAR BACKGROUND - Fixed */}
       <div className="fixed inset-0 z-0 pointer-events-none bg-background">
         <StarryBackground />
@@ -25,21 +26,21 @@ const Index = () => {
             className="text-center"
           >
             <motion.p
-              initial={{ opacity: 0, letterSpacing: "0.2em" }}
-              animate={{ opacity: 1, letterSpacing: "0.4em" }}
+              initial={{ opacity: 0, letterSpacing: "0.1em" }}
+              animate={{ opacity: 1, letterSpacing: "0.2em" }}
               transition={{ delay: 0.5, duration: 1 }}
-              className="font-elegant text-gold-light/90 text-xs sm:text-sm uppercase mb-4 sm:mb-6"
+              className="font-elegant text-gold-light text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4"
             >
               You are cordially invited to
             </motion.p>
 
             <motion.h1
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.7, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
-              className="font-display text-5xl sm:text-6xl md:text-8xl text-gradient-gold text-shadow-glow mb-6 leading-tight"
+              className="font-elegant text-gold-light text-xl sm:text-2xl md:text-3xl font-medium tracking-widest uppercase mb-4 sm:mb-6"
             >
-              A Royal<br />Wedding
+              The Wedding of
             </motion.h1>
 
             <motion.div
@@ -53,10 +54,24 @@ const Index = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.5, duration: 1 }}
-              className="font-elegant text-foreground text-xl sm:text-2xl italic tracking-wide"
+              className="font-display text-5xl sm:text-6xl md:text-8xl text-gradient-gold text-shadow-glow leading-tight mb-12 sm:mb-16"
             >
               Srishti & Parth
             </motion.p>
+
+            {/* Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, y: [0, 10, 0] }}
+              transition={{
+                opacity: { delay: 2, duration: 1 },
+                y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="flex flex-col items-center gap-2"
+            >
+              <span className="font-elegant text-gold-light/80 text-xs tracking-[0.2em] uppercase">Scroll</span>
+              <div className="w-[1px] h-12 bg-gradient-to-b from-gold-light/80 to-transparent" />
+            </motion.div>
           </motion.div>
         </section>
 
@@ -65,25 +80,20 @@ const Index = () => {
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
-          className="relative w-full -mt-10 sm:-mt-20 pointer-events-none"
+          transition={{ delay: 1.5, duration: 1.5, ease: "easeOut" }}
+          className="relative w-full -mt-40 sm:-mt-40 pointer-events-none"
         >
           <PalaceSection />
         </motion.div>
 
         {/* REST OF CONTENT - Background gradient to blend */}
-        <div className="relative bg-gradient-to-b from-background/80 to-background backdrop-blur-sm -mt-1 pt-10">
-          <section className="pb-20">
-            <WeddingDetails delay={0} />
-          </section>
-
-          <section className="pb-20">
-            <EventsSection />
-          </section>
-
-          <section className="pb-20">
-            <RSVPSection />
-          </section>
+        <div className="relative -mt-1">
+          <EventsSection />
+          <SeeTheRoute />
+          {/* Couple Section - Overlaps the sticky map section */}
+          <div className="relative z-20 -mt-[100vh]">
+            <CoupleSection />
+          </div>
         </div>
       </div>
     </div>

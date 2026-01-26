@@ -1,89 +1,140 @@
-import { motion } from "framer-motion";
-import { staggerContainer, fadeUpVariants } from "@/lib/animations";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { fadeUpVariants } from "@/lib/animations";
+import EventCard from "./EventCard";
+import lanternImg from "@/assets/Lantern.png";
 
 const events = [
   {
-    name: "Mehndi Ceremony",
-    date: "March 11, 2025",
-    time: "4:00 PM",
-    venue: "Bride's Residence",
-    description: "An evening of henna, music, and celebration"
+    name: "Haldi",
+    date: "Friday, March 13th 2026",
+    time: "1:00 PM Onwards",
+    description: "A joyful ritual to bless the couple",
+    theme: "yellow"
   },
   {
-    name: "Haldi Ceremony",
-    date: "March 13, 2025",
-    time: "11:00 AM",
-    venue: "Resort",
-    description: "A joyful ritual to bless the couple"
+    name: "Sangeet",
+    date: "Friday, March 13th 2026",
+    time: "7:00 PM Onwards",
+    description: "A night of dance and music with family and friends",
+    theme: "black"
   },
   {
-    name: "Sangeet Night",
-    date: "March 13, 2025",
-    time: "7:00 PM",
-    venue: "Resort Lawn",
-    description: "A night of dance and music with family and friends"
-  },
-  {
-    name: "Wedding Ceremony",
-    date: "March 14, 2025",
-    time: "2:00 PM",
-    venue: "Resort Lawn",
-    description: "The sacred union of two souls"
+    name: "Varmala",
+    date: "Saturday, March 14th 2026",
+    time: "2:00 PM Onwards",
+    description: "The sacred union of two souls",
+    theme: "pink"
   },
   {
     name: "Reception",
-    date: "March 14, 2025",
-    time: "7:00 PM",
-    venue: "Resort's Hallroom",
-    description: "A casual dining celebration with family and friends"
+    date: "Saturday, March 14th 2026",
+    time: "8:00 PM",
+    description: "A casual dining celebration with family and friends",
+    theme: "blue"
   }
+] as const;
+
+// Manual floating lanterns configuration for controlled positioning
+const lanterns = [
+  // Very Top (Compensating for parallax drop with negative top)
+  { id: 16, left: "10%", top: "-10%", scale: 0.65, rotation: 3, duration: 16, twinkleDuration: 3.5, delay: 0, moveRange: 15 },
+  { id: 17, left: "85%", top: "-5%", scale: 0.7, rotation: -4, duration: 13, twinkleDuration: 2.5, delay: 1, moveRange: -20 },
+
+  // Left Side
+  { id: 1, left: "5%", top: "5%", scale: 0.7, rotation: -5, duration: 12, twinkleDuration: 3, delay: 0, moveRange: 20 },
+  { id: 2, left: "15%", top: "25%", scale: 0.6, rotation: 8, duration: 15, twinkleDuration: 4, delay: 1, moveRange: -20 },
+  { id: 3, left: "3%", top: "45%", scale: 0.8, rotation: -2, duration: 14, twinkleDuration: 2.5, delay: 2, moveRange: 20 },
+  { id: 4, left: "3%", top: "65%", scale: 0.7, rotation: 6, duration: 13, twinkleDuration: 3.5, delay: 0.5, moveRange: -15 },
+  { id: 5, left: "12%", top: "85%", scale: 0.6, rotation: -4, duration: 16, twinkleDuration: 2.8, delay: 1.5, moveRange: 10 },
+
+  // Right Side
+  { id: 6, left: "85%", top: "10%", scale: 0.7, rotation: 5, duration: 12, twinkleDuration: 3.2, delay: 1, moveRange: -20 },
+  { id: 7, left: "92%", top: "30%", scale: 0.6, rotation: -6, duration: 14, twinkleDuration: 4.1, delay: 2, moveRange: 15 },
+  { id: 8, left: "80%", top: "55%", scale: 0.8, rotation: 3, duration: 15, twinkleDuration: 2.9, delay: 0, moveRange: -20 },
+  { id: 9, left: "95%", top: "75%", scale: 0.7, rotation: -5, duration: 13, twinkleDuration: 3.7, delay: 1.5, moveRange: 20 },
+  { id: 10, left: "82%", top: "90%", scale: 0.6, rotation: 4, duration: 16, twinkleDuration: 3, delay: 0.5, moveRange: -10 },
+
+  // Overlapping / Inner
+  { id: 11, left: "25%", top: "12%", scale: 0.5, rotation: -15, duration: 18, twinkleDuration: 2.2, delay: 2.5, moveRange: 15 }, // Near Haldi
+  { id: 12, left: "65%", top: "42%", scale: 0.5, rotation: 12, duration: 17, twinkleDuration: 3.8, delay: 1, moveRange: -15 },   // Near Sangeet
+  { id: 13, left: "50%", top: "80%", scale: 0.5, rotation: -10, duration: 19, twinkleDuration: 2.6, delay: 3, moveRange: 10 },    // Near Varmala 
+
+  // Filler / Diagonals
+  { id: 14, left: "20%", top: "70%", scale: 0.55, rotation: 15, duration: 15, twinkleDuration: 3.1, delay: 4, moveRange: 20 },
+  { id: 15, left: "75%", top: "20%", scale: 0.55, rotation: -12, duration: 14, twinkleDuration: 2.7, delay: 3, moveRange: -15 },
 ];
 
 const EventsSection = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Parallax layers (Increased parallax speed to be noticeable)
+  const yFast = useTransform(scrollYProgress, [0, 1], [0, 500]);
+  const yMedium = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const ySlow = useTransform(scrollYProgress, [0, 1], [0, 150]);
+
   return (
-    <motion.section
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      className="px-6 py-16"
-    >
-      <motion.h3
-        variants={fadeUpVariants}
-        className="font-display text-2xl text-center text-gradient-gold text-shadow-glow mb-10"
-      >
-        Wedding Events
-      </motion.h3>
+    <section ref={containerRef} className="relative z-10 w-full min-h-screen pb-20 bg-white/10 backdrop-blur-md border-t border-white/10 overflow-hidden">
 
-      <div className="space-y-4 max-w-md mx-auto">
-        {events.map((event, index) => (
-          <motion.div
-            key={event.name}
-            variants={fadeUpVariants}
-            className="relative bg-card/40 backdrop-blur-sm border border-gold/20 rounded-lg p-5 overflow-hidden group"
-          >
-            {/* Shimmer effect on hover */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/5 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000" />
+      {/* Lanterns Layer */}
+      <div className="absolute inset-0 z-40 pointer-events-none">
+        {lanterns.map((lantern, i) => {
+          // Assign speed based on index
+          const y = i % 3 === 0 ? yFast : i % 3 === 1 ? yMedium : ySlow;
 
-            <div className="relative z-10">
-              <div className="flex items-start justify-between mb-2">
-                <h4 className="font-display text-gold text-lg">{event.name}</h4>
-                <span className="font-elegant text-gold-light/60 text-sm">{event.time}</span>
-              </div>
-              <p className="font-elegant text-foreground/60 text-sm mb-1">{event.date}</p>
-              <p className="font-elegant text-muted-foreground text-sm mb-2">{event.venue}</p>
-              <p className="font-elegant text-foreground/80 text-sm italic">{event.description}</p>
-            </div>
-
-            {/* Left accent line */}
-            <div
-              className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-gold-light via-gold to-gold-dark"
-              style={{ animationDelay: `${index * 0.2}s` }}
+          return (
+            <motion.img
+              key={lantern.id}
+              src={lanternImg}
+              alt="Floating Lantern"
+              style={{
+                y,
+                left: lantern.left,
+                top: lantern.top,
+                rotate: lantern.rotation
+              }}
+              animate={{
+                x: [0, lantern.moveRange, 0],
+                opacity: [0.7, 1, 0.7], // Twinkling effect
+                scale: [lantern.scale, lantern.scale * 1.1, lantern.scale], // Pulsing effect
+              }}
+              transition={{
+                x: { duration: lantern.duration, repeat: Infinity, ease: "easeInOut", delay: lantern.delay },
+                opacity: { duration: lantern.twinkleDuration, repeat: Infinity, ease: "easeInOut" },
+                scale: { duration: lantern.twinkleDuration, repeat: Infinity, ease: "easeInOut" }
+              }}
+              className="absolute w-28 h-auto mix-blend-screen drop-shadow-[0_0_15px_rgba(255,220,100,0.6)]"
             />
-          </motion.div>
-        ))}
+          );
+        })}
       </div>
-    </motion.section>
+
+      <motion.div
+        variants={fadeUpVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="px-6 relative z-30"
+      >
+        <div className="flex flex-col gap-12 pt-10 relative z-30">
+          {events.map((event, index) => (
+            <EventCard
+              key={event.name}
+              title={event.name}
+              date={event.date}
+              time={event.time}
+              description={event.description}
+              delay={index * 0.2}
+              theme={event.theme}
+            />
+          ))}
+        </div>
+      </motion.div>
+    </section>
   );
 };
 
