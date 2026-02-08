@@ -3,15 +3,26 @@ import waterReflection from "@/assets/Water.jpeg";
 import waterReflectionMiddle from "@/assets/Water2.jpeg";
 import waterReflection2 from "@/assets/WaterExtended.jpeg";
 import ganesha from "@/assets/Ganesha.png";
+import varmalaImg from "@/assets/VarmalaGhibli.png";
 
 const PalaceSection = () => {
   return (
     <div className="relative w-full">
-      <img
-        src={goldenPalace}
-        alt="Golden Indian palace"
-        className="w-full h-auto object-cover block"
-      />
+      <div className="relative">
+        <img
+          src={goldenPalace}
+          alt="Golden Indian palace"
+          className="w-full h-auto object-cover block"
+        />
+
+        {/* Varmala Ghibli Image on Balcony - Positioned relative to the palace image */}
+        <img
+          src={varmalaImg}
+          alt="Couple with Varmala on balcony"
+          className="absolute top-[58%] left-1/2 -translate-x-1/2 w-32 sm:w-24 md:w-32 z-10 object-contain drop-shadow-xl"
+        />
+      </div>
+
       <div className="relative">
         <img
           src={waterReflection}
