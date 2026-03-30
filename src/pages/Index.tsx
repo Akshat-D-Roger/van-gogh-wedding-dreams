@@ -5,7 +5,6 @@ import PalaceSection from "@/components/PalaceSection";
 import EventsSection from "@/components/EventsSection";
 import SeeTheRoute from "@/components/SeeTheRoute";
 import CoupleSection from "@/components/CoupleSection";
-import RSVPSection from "@/components/RSVPSection";
 import { LanternLayer } from "@/components/LanternLayer";
 import { useLenis } from "@/hooks/useLenis";
 
@@ -18,7 +17,7 @@ const Index = () => {
   });
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-transparent selection:bg-gold/30 selection:text-gold-light relative overflow-x-clip">
+    <div ref={containerRef} className="min-h-screen bg-transparent selection:bg-gold/30 selection:text-gold-light relative">
       {/* GLOBAL STAR BACKGROUND - Fixed */}
       <div className="fixed inset-0 z-0 pointer-events-none bg-background">
         <StarryBackground />

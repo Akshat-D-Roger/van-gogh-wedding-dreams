@@ -87,7 +87,6 @@
   }
 
   html {
-    overflow-x: hidden;
     /* scroll-behavior removed — Lenis handles smooth scroll */
   }
 }
@@ -214,8 +213,15 @@
 
 /* Sky breathing zoom */
 @keyframes sky-breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
 }
 
 .sky-breathe {
@@ -224,8 +230,17 @@
 
 /* Star twinkling */
 @keyframes star-twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 .star-twinkle {
@@ -234,10 +249,13 @@
 
 /* Lantern sway + opacity + scale combined */
 @keyframes lantern-sway {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0) scale(var(--lantern-scale)) rotate(var(--lantern-rotation));
     opacity: 0.6;
   }
+
   50% {
     transform: translateX(var(--lantern-move)) scale(var(--lantern-scale-up)) rotate(var(--lantern-rotation));
     opacity: 0.8;

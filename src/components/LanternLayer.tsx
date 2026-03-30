@@ -8,7 +8,9 @@ interface LanternLayerProps {
 
 export const LanternLayer = ({ scrollYProgress }: LanternLayerProps) => {
     // Parallax effect: Lanterns move down as we scroll down, but slower than content
-    const yParallax = useTransform(scrollYProgress, [0, 1], [0, 1600]);
+    // Using 200svh equivalent (2x viewport height) for consistent behavior across devices
+    const parallaxDistance = typeof window !== "undefined" ? window.innerHeight * 2 : 1600;
+    const yParallax = useTransform(scrollYProgress, [0, 1], [0, parallaxDistance]);
 
     return (
         <motion.div
