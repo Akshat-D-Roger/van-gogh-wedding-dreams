@@ -45,7 +45,7 @@ const EventsSection = () => {
       />
       <div className="relative z-30 flex flex-col">
         {events.map((event, index) => (
-          <div key={event.name} className="w-full snap-center">
+          <div key={event.name} className="w-full">
             <EventCard
               title={event.name}
               date={event.date}

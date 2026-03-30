@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
+import { memo } from "react";
 
-const SeeTheRoute = () => {
+const SeeTheRoute = memo(() => {
     const mapUrl = "https://www.google.com/maps/search/?api=1&query=Savitri+Resorts+Pushkar";
 
     return (
         <section className="relative w-full h-[215vh]">
             {/* Background - Teal/Green with subtle texture - Scrolls with the section */}
-            <div className="absolute inset-0 bg-[#40826D]">
-                {/* Subtle patterned overlay */}
+            <div className="absolute inset-0 bg-[#40826D] -z-10">
+                {/* Subtle patterned overlay - Restored to scroll structurally upward */}
                 <div className="absolute inset-0 opacity-10"
                     style={{
                         backgroundImage: 'radial-gradient(circle at 50% 50%, #fff 2px, transparent 2.5px)',
@@ -17,8 +18,7 @@ const SeeTheRoute = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
             </div>
 
-            {/* Sticky Content Container - Stays fixed while background scrolls */}
-            <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+            <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden w-full max-w-[100vw]">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -61,6 +61,7 @@ const SeeTheRoute = () => {
             </div>
         </section>
     );
-};
+});
 
+SeeTheRoute.displayName = 'SeeTheRoute';
 export default SeeTheRoute;
