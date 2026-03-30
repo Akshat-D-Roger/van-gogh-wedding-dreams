@@ -7,10 +7,8 @@ import SeeTheRoute from "@/components/SeeTheRoute";
 import CoupleSection from "@/components/CoupleSection";
 import WarmRegardsSection from "@/components/WarmRegardsSection";
 import { LanternLayer } from "@/components/LanternLayer";
-import { useLenis } from "@/hooks/useLenis";
 
 const Index = () => {
-  useLenis();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,

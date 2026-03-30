@@ -87,7 +87,8 @@
   }
 
   html {
-    /* scroll-behavior removed — Lenis handles smooth scroll */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
