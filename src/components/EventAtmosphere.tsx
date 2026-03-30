@@ -192,18 +192,27 @@ interface EventAtmosphereProps {
 
 const EventAtmosphere = ({ variant }: EventAtmosphereProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  // Live visibility (used for Sangeet so crackers stop when leaving that card)
+  
+  // Trigger slightly before they enter the screen to ensure animations are already playing when viewed
   const isInView = useInView(containerRef, {
     once: false,
-    amount: variant === "sangeet" ? 0.25 : 0.12,
-    margin: variant === "sangeet" ? "0px 0px -12% 0px" : "0px 0px -8% 0px",
+    amount: 0,
+    margin: "30% 0px 30% 0px", 
   });
+
   return (
-    <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden rounded-[inherit]">
-      {variant === "haldi" && isInView && <HaldiYellowBursts />}
+    <div 
+      ref={containerRef} 
+      className={`absolute inset-0 z-0 overflow-hidden rounded-[inherit] transition-opacity duration-700 ${!isInView ? 'paused-animation opacity-0' : 'opacity-100'}`}
+    >
+      {/* 
+        Permanently mount the elements so React doesn't cause Main-Thread jank by destroying/rebuilding 
+        DOM nodes while the user is actively scrolling. CSS paused-animation kills the GPU cost entirely.
+      */}
+      {variant === "haldi" && <HaldiYellowBursts />}
       {variant === "sangeet" && <SangeetSkyCrackers active={isInView} />}
-      {variant === "varmala" && isInView && <VarmalaFlowerShower />}
-      {variant === "reception" && isInView && <ReceptionPaparazziFlashes />}
+      {variant === "varmala" && <VarmalaFlowerShower />}
+      {variant === "reception" && <ReceptionPaparazziFlashes />}
     </div>
   );
 };
