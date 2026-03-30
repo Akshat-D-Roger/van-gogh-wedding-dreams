@@ -74,15 +74,15 @@ const Index = () => {
         {/* REST OF CONTENT - Background gradient to blend */}
         <div className="relative -mt-1">
           <EventsSection />
-          <div className="snap-start">
+          <div>
             <SeeTheRoute />
           </div>
           {/* Couple Section - Overlaps the sticky map section */}
           <div className="relative z-20 -mt-[100vh]">
-            <div className="snap-start pt-1">
+            <div className="pt-1">
               <CoupleSection />
             </div>
-            <div className="snap-start">
+            <div>
               <WarmRegardsSection />
             </div>
           </div>

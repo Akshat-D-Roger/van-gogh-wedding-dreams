@@ -127,8 +127,9 @@ function VarmalaFlowerShower() {
       {petals.map((p) => (
         <div
           key={p.id}
-          className="absolute select-none opacity-75 will-change-transform"
+          className="absolute select-none opacity-75"
           style={{
+            willChange: "transform, opacity",
             left: p.left,
             top: "-6%",
             width: p.petalW,
@@ -158,9 +159,9 @@ function ReceptionPaparazziFlashes() {
         id: i,
         left: `${6 + Math.random() * 88}%`,
         top: `${6 + Math.random() * 88}%`,
-        size: 100 + Math.random() * 260,
-        delay: Math.random() * 5, // random start offset up to 5s
-        duration: 3 + Math.random() * 4, // chaotic 3s to 7s cycle time
+        size: 80 + Math.random() * 140,
+        delay: Math.random() * 10, // spread start offset over 10s
+        duration: 8 + Math.random() * 8, // very slow 8s to 16s cycle time
       })),
     []
   );
