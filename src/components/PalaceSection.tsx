@@ -19,7 +19,7 @@ const PalaceSection = () => {
         <img
           src={varmalaImg}
           alt="Couple with Varmala on balcony"
-          className="absolute top-[58%] left-1/2 -translate-x-1/2 w-[30%] z-10 object-contain drop-shadow-xl"
+          className="absolute top-[58%] left-1/2 -translate-x-1/2 w-[30%] z-10 object-contain"
         />
       </div>
 
@@ -48,7 +48,7 @@ const PalaceSection = () => {
           }}
         />
         {/* Ganesha & Invitation Overlay */}
-        <div className="absolute top-[30%] left-0 w-full z-10 flex flex-col items-center justify-center text-center px-4 mix-blend-plus-lighter">
+        <div className="absolute top-[30%] left-0 w-full z-10 flex flex-col items-center justify-center text-center px-4">
           <p className="font-elegant text-white text-lg sm:text-xl mb-4 tracking-wider">
             ॐ श्री गणेशाय नमः
           </p>

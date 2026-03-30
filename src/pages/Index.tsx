@@ -50,20 +50,6 @@ const Index = () => {
                 PARTH
               </h1>
             </motion.div>
-
-            {/* Scroll Indicator */}
-            {/* <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, y: [0, 10, 0] }}
-              transition={{
-                opacity: { delay: 2, duration: 1 },
-                y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
-              }}
-              className="flex flex-col items-center gap-2"
-            >
-              <span className="font-elegant text-gold-light/80 text-xs tracking-[0.2em] uppercase">Scroll</span>
-              <div className="w-[1px] h-12 bg-gradient-to-b from-gold-light/80 to-transparent" />
-            </motion.div> */}
           </div>
         </section>
 

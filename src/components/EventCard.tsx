@@ -81,7 +81,7 @@ const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow'
                         <img
                             src={icon}
                             alt={`${title} icon`}
-                            className="w-72 sm:w-72 md:w-96 lg:w-[500px] h-auto object-contain drop-shadow-2xl"
+                            className="w-72 sm:w-72 md:w-96 lg:w-[500px] h-auto object-contain"
                         />
                     </motion.div>
                 )}
@@ -113,12 +113,12 @@ const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow'
                 <img
                     src={flowerCorner}
                     alt="Flower decoration"
-                    className="absolute top-0 right-0 w-32 sm:w-56 md:w-80 lg:w-[450px] z-20 drop-shadow-2xl brightness-110 pointer-events-none opacity-90"
+                    className="absolute top-0 right-0 w-32 sm:w-56 md:w-80 lg:w-[450px] z-20 pointer-events-none opacity-90"
                 />
                 <img
                     src={flowerCorner}
                     alt="Flower decoration"
-                    className="absolute bottom-0 left-0 w-32 sm:w-56 md:w-80 lg:w-[450px] z-20 drop-shadow-2xl brightness-110 rotate-180 pointer-events-none opacity-90"
+                    className="absolute bottom-0 left-0 w-32 sm:w-56 md:w-80 lg:w-[450px] z-20 rotate-180 pointer-events-none opacity-90"
                 />
             </div>
         </motion.div>
