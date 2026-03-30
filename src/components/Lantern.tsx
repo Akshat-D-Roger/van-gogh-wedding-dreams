@@ -1,11 +1,12 @@
 import lanternImg from "@/assets/Lantern.png";
 import { LanternConfig } from "@/data/lanterns";
+import { memo } from "react";
 
 interface LanternProps {
     config: LanternConfig;
 }
 
-export const Lantern = ({ config }: LanternProps) => {
+export const Lantern = memo(({ config }: LanternProps) => {
     return (
         <img
             src={lanternImg}
@@ -27,4 +28,6 @@ export const Lantern = ({ config }: LanternProps) => {
             } as React.CSSProperties}
         />
     );
-};
+});
+
+Lantern.displayName = 'Lantern';

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, memo } from "react";
 import { useInView } from "framer-motion";
 import confetti from "canvas-confetti";
 
@@ -62,7 +62,8 @@ function SangeetSkyCrackers({ active }: { active: boolean }) {
     if (!canvas) return;
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    const fire = confetti.create(canvas, { resize: true, useWorker: false });
+    // VERY IMPORTANT: Enable useWorker to offload canvas drawing from the main React UI thread
+    const fire = confetti.create(canvas, { resize: true, useWorker: true });
     const burst = () => {
       const x = 0.1 + Math.random() * 0.8;
       const y = 0.04 + Math.random() * 0.24;
@@ -124,6 +125,23 @@ function VarmalaFlowerShower() {
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      {/* 
+        CRITICAL iOS GPU FIX: 
+        Safari drops completely to software CPU rendering if you use var() inside @keyframes for transform. 
+        Instead, we mathematically generate pure, hard-coded keyframes for all 36 petals inside a scoped style block so the GPU guarantees hardware-acceleration!
+      */}
+      <style>
+        {petals.map(p => `
+          @keyframes petal-fall-${p.id} {
+            0% { transform: translate(0, 0vh) rotate(${p.baseRotate}deg) scale(${p.scale}); opacity: 0; }
+            15% { opacity: 0.78; }
+            50% { transform: translate(${p.drift * 0.25}px, 59vh) rotate(${p.baseRotate + 48}deg) scale(${p.scale}); opacity: 0.72; }
+            85% { opacity: 0.5; }
+            100% { transform: translate(${p.drift * 0.55}px, 118vh) rotate(${p.baseRotate + 24}deg) scale(${p.scale}); opacity: 0; }
+          }
+        `).join('\n')}
+      </style>
+
       {petals.map((p) => (
         <div
           key={p.id}
@@ -136,14 +154,8 @@ function VarmalaFlowerShower() {
             height: p.petalH,
             borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
             background: p.gradient,
-            '--r-base': `${p.baseRotate}deg`,
-            '--r-mid': `${p.baseRotate + 48}deg`,
-            '--r-end': `${p.baseRotate + 24}deg`,
-            '--p-scale': p.scale,
-            '--drift-mid': `${p.drift * 0.25}px`, // mapped interpolation
-            '--drift-max': `${p.drift * 0.55}px`,
-            animation: `varmala-petal-fall ${p.duration}s linear -${p.delay}s infinite`
-          } as React.CSSProperties}
+            animation: `petal-fall-${p.id} ${p.duration}s linear -${p.delay}s infinite`
+          }}
           aria-hidden
         />
       ))}
@@ -190,7 +202,7 @@ interface EventAtmosphereProps {
   variant: EventAtmosphereVariant;
 }
 
-const EventAtmosphere = ({ variant }: EventAtmosphereProps) => {
+const EventAtmosphere = memo(({ variant }: EventAtmosphereProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Trigger slightly before they enter the screen to ensure animations are already playing when viewed
@@ -215,6 +227,7 @@ const EventAtmosphere = ({ variant }: EventAtmosphereProps) => {
       {variant === "reception" && <ReceptionPaparazziFlashes />}
     </div>
   );
-};
+});
 
+EventAtmosphere.displayName = 'EventAtmosphere';
 export default EventAtmosphere;

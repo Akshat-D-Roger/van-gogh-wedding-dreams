@@ -1,4 +1,5 @@
 import { motion, MotionValue, useTransform } from "framer-motion";
+import { memo } from "react";
 import { lanterns } from "@/data/lanterns";
 import { Lantern } from "./Lantern";
 
@@ -7,7 +8,7 @@ interface LanternLayerProps {
     active?: boolean;
 }
 
-export const LanternLayer = ({ scrollYProgress, active = true }: LanternLayerProps) => {
+export const LanternLayer = memo(({ scrollYProgress, active = true }: LanternLayerProps) => {
     // Parallax effect: Lanterns move down as we scroll down, but slower than content
     // Using 200svh equivalent (2x viewport height) for consistent behavior across devices
     const parallaxDistance = typeof window !== "undefined" ? window.innerHeight * 2 : 1600;
@@ -30,4 +31,6 @@ export const LanternLayer = ({ scrollYProgress, active = true }: LanternLayerPro
             </motion.div>
         </motion.div>
     );
-};
+});
+
+LanternLayer.displayName = 'LanternLayer';

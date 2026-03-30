@@ -528,31 +528,7 @@
   animation: haldi-splash-bottom 3.2s ease-in-out infinite 1.35s backwards;
 }
 
-/* Varmala Petal Fall Keyframes */
-@keyframes varmala-petal-fall {
-  0% {
-    transform: translate(0, 0vh) rotate(var(--r-base)) scale(var(--p-scale));
-    opacity: 0;
-  }
-
-  15% {
-    opacity: 0.78;
-  }
-
-  50% {
-    transform: translate(var(--drift-mid), 59vh) rotate(var(--r-mid)) scale(var(--p-scale));
-    opacity: 0.72;
-  }
-
-  85% {
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: translate(var(--drift-max), 118vh) rotate(var(--r-end)) scale(var(--p-scale));
-    opacity: 0;
-  }
-}
+/* Deleted varmala-petal-fall: generated dynamically in JS for iOS GPU offloading */
 
 /* Elegant Bokeh Keyframes */
 @keyframes paparazzi-flash-burst {

@@ -1,7 +1,7 @@
-import { useMemo } from "react";
+import { useMemo, memo } from "react";
 import starrySky from "@/assets/Sky.png";
 
-const StarryBackground = ({ active = true }: { active?: boolean }) => {
+const StarryBackground = memo(({ active = true }: { active?: boolean }) => {
   // Memoize star positions so they don't re-randomize on re-render
   const stars = useMemo(() =>
     Array.from({ length: 20 }, (_, i) => ({
@@ -46,6 +46,7 @@ const StarryBackground = ({ active = true }: { active?: boolean }) => {
       </div>
     </div>
   );
-};
+});
 
+StarryBackground.displayName = 'StarryBackground';
 export default StarryBackground;

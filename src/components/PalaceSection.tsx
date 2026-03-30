@@ -4,8 +4,9 @@ import waterReflectionMiddle from "@/assets/Water2.jpeg";
 import waterReflection2 from "@/assets/WaterExtended.jpeg";
 import ganesha from "@/assets/Ganesha.png";
 import varmalaImg from "@/assets/VarmalaGhibli.png";
+import { memo } from "react";
 
-const PalaceSection = () => {
+const PalaceSection = memo(() => {
   return (
     <div className="relative w-full">
       <div className="relative">
@@ -97,6 +98,7 @@ const PalaceSection = () => {
       </div>
     </div>
   );
-};
+});
 
+PalaceSection.displayName = 'PalaceSection';
 export default PalaceSection;
