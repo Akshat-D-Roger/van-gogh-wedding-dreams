@@ -46,7 +46,7 @@ const brideContent: SideContent = {
         "Amit – Charu",
         "Anil – Manisha",
         "Arpit – Aishwarya",
-        "Akshat, Vertika, Archie, Divita, Arnav, Aakarsh",
+        "Akshat, Vertika, Archie, Divita, Arnav, Aakarsh, Shreenika",
         "Anmol, Anurag, Anish, Advay, Ira"
       ],
     },
