@@ -14,9 +14,9 @@ export interface LanternConfig {
 // Reduced set for mobile performance (~14 lanterns instead of 36)
 export const lanterns: LanternConfig[] = [
     // LARGE Lanterns (4)
-    { id: 1, left: "10%", top: "42%", duration: 14, delay: 0, rotation: -3, twinkleDuration: 3, moveRange: 15, scale: 1.2, size: "w-24" },
-    { id: 2, left: "75%", top: "2%", duration: 16, delay: 1, rotation: 4, twinkleDuration: 4, moveRange: -15, scale: 1.1, size: "w-24" },
-    { id: 3, left: "65%", top: "75%", duration: 15, delay: 0.5, rotation: -2, twinkleDuration: 3.5, moveRange: 20, scale: 1.2, size: "w-24" },
+    { id: 1, left: "10%", top: "42%", duration: 14, delay: 0, rotation: -3, twinkleDuration: 3, moveRange: 15, scale: 0.9, size: "w-24" },
+    { id: 2, left: "75%", top: "2%", duration: 16, delay: 1, rotation: 4, twinkleDuration: 4, moveRange: -15, scale: 0.9, size: "w-24" },
+    { id: 3, left: "65%", top: "75%", duration: 15, delay: 0.5, rotation: -2, twinkleDuration: 3.5, moveRange: -15, scale: 0.9, size: "w-24" },
     // { id: 4, left: "75%", top: "70%", duration: 13, delay: 1.5, rotation: 5, twinkleDuration: 2.8, moveRange: -20, scale: 1.1, size: "w-24" },
 
     // MEDIUM Lanterns (6)
