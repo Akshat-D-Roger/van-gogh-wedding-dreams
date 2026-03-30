@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import starrySky from "@/assets/Sky.png";
 
-const StarryBackground = () => {
+const StarryBackground = ({ active = true }: { active?: boolean }) => {
   // Memoize star positions so they don't re-randomize on re-render
   const stars = useMemo(() =>
     Array.from({ length: 20 }, (_, i) => ({
@@ -14,7 +14,7 @@ const StarryBackground = () => {
   , []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className={`absolute inset-0 overflow-hidden ${!active ? "paused-animation" : ""}`}>
       {/* Base starry sky image — CSS animation instead of framer-motion */}
       <div className="absolute inset-0 sky-breathe">
         <img

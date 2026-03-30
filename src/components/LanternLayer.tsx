@@ -4,9 +4,10 @@ import { Lantern } from "./Lantern";
 
 interface LanternLayerProps {
     scrollYProgress: MotionValue<number>;
+    active?: boolean;
 }
 
-export const LanternLayer = ({ scrollYProgress }: LanternLayerProps) => {
+export const LanternLayer = ({ scrollYProgress, active = true }: LanternLayerProps) => {
     // Parallax effect: Lanterns move down as we scroll down, but slower than content
     // Using 200svh equivalent (2x viewport height) for consistent behavior across devices
     const parallaxDistance = typeof window !== "undefined" ? window.innerHeight * 2 : 1600;
@@ -14,7 +15,7 @@ export const LanternLayer = ({ scrollYProgress }: LanternLayerProps) => {
 
     return (
         <motion.div
-            className="absolute inset-0 z-20 pointer-events-none h-[150vh]" // Extend height to cover palace too
+            className={`absolute inset-0 z-20 pointer-events-none h-[150vh] ${!active ? 'paused-animation' : ''}`} // Extend height to cover palace too
             initial={{ y: 700, opacity: 1 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 3, ease: "easeOut" }}

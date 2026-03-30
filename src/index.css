@@ -208,10 +208,11 @@
   right: 30%;
 }
 
-/* ==============================
-   GPU-ACCELERATED ANIMATIONS
-   Runs on compositor thread, not main thread
-   ============================== */
+/* GPU-ACCELERATED ANIMATIONS */
+.paused-animation,
+.paused-animation * {
+  animation-play-state: paused !important;
+}
 
 /* Sky breathing zoom */
 @keyframes sky-breathe {
