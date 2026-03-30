@@ -24,8 +24,8 @@ const WeddingApp = () => {
 
   return (
     <div ref={containerRef} className="w-full min-h-screen bg-transparent selection:bg-gold/30 selection:text-gold-light relative">
-      {/* GLOBAL STAR BACKGROUND - Fixed */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-background">
+      {/* GLOBAL STAR BACKGROUND - Fixed accurately to maximum glass to prevent URL bar resize jerks */}
+      <div className="fixed top-0 left-0 w-full h-[100lvh] z-0 pointer-events-none bg-background">
         <StarryBackground active={isTopInView} />
       </div>
 
