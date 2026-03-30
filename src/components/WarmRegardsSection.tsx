@@ -6,7 +6,7 @@ const { warmRegards: familyGroups } = getSideContent();
 
 const WarmRegardsSection = () => {
   return (
-    <section className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a2e] via-[#16213e] to-[#0f3460]" />
       <div

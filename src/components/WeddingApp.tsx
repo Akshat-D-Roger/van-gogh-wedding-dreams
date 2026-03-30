@@ -23,7 +23,7 @@ const WeddingApp = () => {
   });
 
   return (
-    <div ref={containerRef} className="w-full min-h-[100dvh] bg-transparent selection:bg-gold/30 selection:text-gold-light relative">
+    <div ref={containerRef} className="w-full min-h-screen bg-transparent selection:bg-gold/30 selection:text-gold-light relative">
       {/* GLOBAL STAR BACKGROUND - Fixed */}
       <div className="fixed inset-0 z-0 pointer-events-none bg-background">
         <StarryBackground active={isTopInView} />
@@ -35,8 +35,8 @@ const WeddingApp = () => {
           <LanternLayer scrollYProgress={scrollYProgress} active={isTopInView} />
 
           {/* HERO SECTION */}
-          {/* We use min-h-[50dvh] so the text is centered perfectly. */}
-          <section className="relative min-h-[50dvh] flex flex-col items-center justify-center">
+          {/* We use min-h-[50vh] so the text is centered perfectly. */}
+          <section className="relative min-h-[50vh] flex flex-col items-center justify-center">
             <div className="text-center w-full max-w-[100vw] overflow-hidden">
               <motion.div
                 initial={{ y: "75svh", opacity: 1 }}

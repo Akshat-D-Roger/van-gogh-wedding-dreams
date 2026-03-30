@@ -69,10 +69,10 @@ const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow'
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 1, delay, ease: "easeOut" }}
-            className="relative w-full min-h-[100dvh] flex flex-col max-w-[100vw] overflow-x-hidden"
+            className="relative w-full min-h-screen flex flex-col max-w-[100vw] overflow-x-hidden"
         >
             {/* Main Colored Background - Full Screen */}
-            <div className={`relative overflow-hidden ${styles.innerBg} w-full min-h-[100dvh] flex flex-col items-center justify-between py-24 sm:py-32 md:py-40 text-center transition-colors duration-500`}>
+            <div className={`relative overflow-hidden ${styles.innerBg} w-full min-h-screen flex flex-col items-center justify-between py-24 sm:py-32 md:py-40 text-center transition-colors duration-500`}>
 
                 <EventAtmosphere variant={atmosphere} />
 
