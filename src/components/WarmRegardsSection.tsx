@@ -6,7 +6,7 @@ const { warmRegards: familyGroups } = getSideContent();
 
 const WarmRegardsSection = () => {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative w-full min-h-[100dvh] flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1a0a2e] via-[#16213e] to-[#0f3460]" />
       <div
@@ -25,12 +25,12 @@ const WarmRegardsSection = () => {
       <img
         src={flowerCorner}
         alt=""
-        className="absolute top-0 right-0 w-28 sm:w-44 md:w-64 z-10 drop-shadow-2xl brightness-110 pointer-events-none opacity-80"
+        className="absolute top-0 right-0 w-28 sm:w-44 md:w-64 z-10 brightness-110 pointer-events-none opacity-80"
       />
       <img
         src={flowerCorner}
         alt=""
-        className="absolute bottom-0 left-0 w-28 sm:w-44 md:w-64 z-10 drop-shadow-2xl brightness-110 rotate-180 pointer-events-none opacity-80"
+        className="absolute bottom-0 left-0 w-28 sm:w-44 md:w-64 z-10 brightness-110 rotate-180 pointer-events-none opacity-80"
       />
 
       {/* Content */}
