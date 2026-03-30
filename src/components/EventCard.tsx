@@ -86,6 +86,7 @@ const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow'
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0, y: 20 }}
                         whileInView={{ scale: 1, opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.3 }}
                         className="relative z-30 flex-1 flex items-center justify-center w-full"
                     >
