@@ -193,17 +193,17 @@ interface EventAtmosphereProps {
 
 const EventAtmosphere = ({ variant }: EventAtmosphereProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // Trigger slightly before they enter the screen to ensure animations are already playing when viewed
   const isInView = useInView(containerRef, {
     once: false,
     amount: 0,
-    margin: "30% 0px 30% 0px", 
+    margin: "30% 0px 30% 0px",
   });
 
   return (
-    <div 
-      ref={containerRef} 
+    <div
+      ref={containerRef}
       className={`absolute inset-0 z-0 overflow-hidden rounded-[inherit] transition-opacity duration-700 ${!isInView ? 'paused-animation opacity-0' : 'opacity-100'}`}
     >
       {/* 
