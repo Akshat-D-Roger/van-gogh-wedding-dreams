@@ -18,11 +18,15 @@ export const LanternLayer = ({ scrollYProgress }: LanternLayerProps) => {
             initial={{ y: 700, opacity: 1 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 3, ease: "easeOut" }}
-            style={{ y: yParallax }} // Apply parallax to the whole container
         >
-            {lanterns.map((lantern) => (
-                <Lantern key={lantern.id} config={lantern} />
-            ))}
+            <motion.div
+                className="absolute inset-0 w-full h-full"
+                style={{ y: yParallax }} // Apply parallax to inner container
+            >
+                {lanterns.map((lantern) => (
+                    <Lantern key={lantern.id} config={lantern} />
+                ))}
+            </motion.div>
         </motion.div>
     );
 };

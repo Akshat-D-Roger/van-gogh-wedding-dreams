@@ -29,7 +29,7 @@ const Index = () => {
         {/* HERO SECTION */}
         {/* We use min-h-[70vh] so the text is centered in the upper portion, 
             leaving room for the Palace to peek up from the bottom of the fold. */}
-        <section className="relative min-h-[50vh] flex flex-col items-center justify-center">
+        <section className="relative min-h-[50vh] flex flex-col items-center justify-center snap-start">
           <div className="text-center">
             <motion.div
               initial={{ y: "75svh", opacity: 1 }}
@@ -65,11 +65,17 @@ const Index = () => {
         {/* REST OF CONTENT - Background gradient to blend */}
         <div className="relative -mt-1">
           <EventsSection />
-          <SeeTheRoute />
+          <div className="snap-start">
+            <SeeTheRoute />
+          </div>
           {/* Couple Section - Overlaps the sticky map section */}
           <div className="relative z-20 -mt-[100vh]">
-            <CoupleSection />
-            <WarmRegardsSection />
+            <div className="snap-start pt-1">
+              <CoupleSection />
+            </div>
+            <div className="snap-start">
+              <WarmRegardsSection />
+            </div>
           </div>
         </div>
       </div>

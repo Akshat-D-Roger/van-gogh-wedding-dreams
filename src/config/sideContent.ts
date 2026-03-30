@@ -46,28 +46,34 @@ const brideContent: SideContent = {
         "Amit – Charu",
         "Anil – Manisha",
         "Arpit – Aishwarya",
-      "Akshat, Vertika, Divita, Arnav",
-    ],
+        "Akshat, Vertika, Archie, Divita, Arnav, Aakarsh",
+        "Anmol, Anurag, Anish, Advay, Ira"
+      ],
     },
     {
       label: "Special Invitation",
       names: [
-        "Sapna – Ravi Ji Gupta",
+        "Sapna – Ravi Ji",
         "Ritika – Ashutosh Ji",
-        "Payal – Shashank Ji Rawat",
+        "Payal – Shashank Ji",
       ],
     },
     {
       label: "Paternal Side",
       names: [
-        "Shri Jawahar Lal – Smt. Kamini",
-        "Smt. Sunit – Lt. Shri Hemant Ji",
+        "Shri Jawahar Lal Ji – Smt. Kamini Ji",
+        "Lt. Shri Hemant Ji – Smt. Sunita Ji",
         "Nikunj – Richa",
       ],
     },
     {
       label: "Maternal Side",
-      names: ["Smt. Shakuntla Ji", "Santosh – Trisha"],
+      names: [
+        "Smt. Shakuntla Ji – Lt. Shri Virendra Saran Ji",
+        "Santosh – Trisha",
+        "Rajesh - Sadhna",
+        "Sanjeev - Sushma",
+      ],
     },
   ],
 };

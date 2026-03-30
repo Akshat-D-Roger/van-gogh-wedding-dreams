@@ -139,7 +139,7 @@ function SangeetSkyCrackers({ active }: { active: boolean }) {
 function VarmalaFlowerShower() {
   const petals = useMemo(
     () =>
-      Array.from({ length: 72 }, (_, i) => ({
+      Array.from({ length: 36 }, (_, i) => ({
         id: i,
         left: `${(i * 17 + Math.sin(i) * 13) % 100}%`,
         delay: (i % 12) * 0.35 + Math.random() * 0.4,
@@ -239,11 +239,11 @@ function ReceptionPaparazziFlashes() {
       } else {
         spawnFlash();
       }
-      timeoutId = window.setTimeout(tick, 180 + Math.random() * 520);
+      timeoutId = window.setTimeout(tick, 300 + Math.random() * 800);
     };
 
     paparazziBurst();
-    timeoutId = window.setTimeout(tick, 280);
+    timeoutId = window.setTimeout(tick, 400);
 
     return () => {
       cancelled = true;
@@ -289,21 +289,12 @@ const EventAtmosphere = ({ variant }: EventAtmosphereProps) => {
     amount: variant === "sangeet" ? 0.25 : 0.12,
     margin: variant === "sangeet" ? "0px 0px -12% 0px" : "0px 0px -8% 0px",
   });
-  // One-time gate (used by other sections that should keep playing once triggered)
-  const hasEnteredRef = useRef(false);
-
-  if (isInView) {
-    hasEnteredRef.current = true;
-  }
-
-  const hasEntered = hasEnteredRef.current;
-
   return (
     <div ref={containerRef} className="absolute inset-0 z-0 overflow-hidden rounded-[inherit]">
-      {variant === "haldi" && hasEntered && <HaldiYellowBursts />}
+      {variant === "haldi" && isInView && <HaldiYellowBursts />}
       {variant === "sangeet" && <SangeetSkyCrackers active={isInView} />}
-      {variant === "varmala" && hasEntered && <VarmalaFlowerShower />}
-      {variant === "reception" && hasEntered && <ReceptionPaparazziFlashes />}
+      {variant === "varmala" && isInView && <VarmalaFlowerShower />}
+      {variant === "reception" && isInView && <ReceptionPaparazziFlashes />}
     </div>
   );
 };
