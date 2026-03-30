@@ -1,45 +1,45 @@
-import { motion } from "framer-motion";
+import { useMemo } from "react";
 import starrySky from "@/assets/Sky.png";
 
 const StarryBackground = () => {
+  // Memoize star positions so they don't re-randomize on re-render
+  const stars = useMemo(() =>
+    Array.from({ length: 20 }, (_, i) => ({
+      id: i,
+      left: `${(i * 37 + 13) % 100}%`,      // Deterministic pseudo-random spread
+      top: `${(i * 23 + 7) % 60}%`,
+      duration: 2 + (i % 5) * 0.6,            // 2s - 4.4s
+      delay: (i % 7) * 0.3,                   // stagger
+    }))
+  , []);
+
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Base starry sky image */}
-      <motion.div
-        initial={{ scale: 1 }}
-        animate={{ scale: 1.2 }}
-        transition={{ duration: 15, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
-        className="absolute inset-0"
-      >
+      {/* Base starry sky image — CSS animation instead of framer-motion */}
+      <div className="absolute inset-0 sky-breathe">
         <img
           src={starrySky}
-          alt="Van Gogh starry night sky"
+          alt=""
           className="w-full h-full object-cover"
+          style={{ willChange: 'transform' }}
         />
-      </motion.div>
+      </div>
 
       {/* Overlay for depth */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/90" />
 
-      {/* Animated twinkling stars overlay */}
+      {/* Animated twinkling stars — CSS animation instead of framer-motion */}
       <div className="absolute inset-0">
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-gold-light rounded-full"
+        {stars.map((star) => (
+          <div
+            key={star.id}
+            className="absolute w-1 h-1 bg-gold-light rounded-full star-twinkle"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 60}%`,
-            }}
-            animate={{
-              opacity: [0.3, 1, 0.3],
-              scale: [0.8, 1.2, 0.8],
-            }}
-            transition={{
-              duration: 2 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-              ease: "easeInOut",
+              left: star.left,
+              top: star.top,
+              animationDuration: `${star.duration}s`,
+              animationDelay: `${star.delay}s`,
+              willChange: 'opacity, transform',
             }}
           />
         ))}

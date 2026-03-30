@@ -33,7 +33,7 @@ const events = [
 
 const EventsSection = () => {
   return (
-    <section className="relative z-10 w-full min-h-screen pb-20 bg-white/10 backdrop-blur-md border-t border-white/10 overflow-hidden">
+    <section className="relative z-10 w-full min-h-screen pb-20 bg-background/95 border-t border-white/10 overflow-hidden">
       <div className="relative z-30 flex flex-col">
         {events.map((event, index) => (
           <div

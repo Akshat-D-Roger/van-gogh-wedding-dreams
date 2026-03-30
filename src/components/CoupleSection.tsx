@@ -12,15 +12,10 @@ import img4 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.24 PM (
 import img5 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.25 PM.jpeg";
 import img6 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.25 PM (1).jpeg";
 import img7 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.26 PM.jpeg";
-import img8 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.26 PM (1).jpeg";
-import img9 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.27 PM.jpeg";
-import img10 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.27 PM (1).jpeg";
 import img11 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.27 PM (2).jpeg";
 import img12 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.45.09 PM.jpeg";
-import img13 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.46.22 PM.jpeg";
-import img14 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.46.22 PM (1).jpeg";
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14];
+const images = [img1, img2, img3, img4, img5, img6, img7, img11, img12];
 
 const CoupleSection = () => {
     const [index, setIndex] = useState(0);

@@ -19,7 +19,7 @@ const PalaceSection = () => {
         <img
           src={varmalaImg}
           alt="Couple with Varmala on balcony"
-          className="absolute top-[58%] left-1/2 -translate-x-1/2 w-32 sm:w-24 md:w-32 z-10 object-contain drop-shadow-xl"
+          className="absolute top-[58%] left-1/2 -translate-x-1/2 w-[30%] z-10 object-contain drop-shadow-xl"
         />
       </div>
 

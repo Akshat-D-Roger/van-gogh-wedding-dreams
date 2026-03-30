@@ -36,8 +36,8 @@ export const useAssetLoader = () => {
                 // We use Promise.allSettled to be extra safe, although the individual promises above handle errors.
                 await Promise.all([...imagePromises, fontPromise]);
 
-                // Minimum loading time to prevent flash
-                // await new Promise(resolve => setTimeout(resolve, 1000));
+                // Minimum loading time to ensure GPU has uploaded textures
+                await new Promise(resolve => setTimeout(resolve, 500));
 
             } catch (error) {
                 console.error("[Preloader] Error loading assets:", error);
