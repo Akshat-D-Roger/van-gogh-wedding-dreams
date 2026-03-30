@@ -56,7 +56,7 @@ const PalaceSection = () => {
           <img
             src={ganesha}
             alt="Lord Ganesha"
-            className="w-100 sm:w-100 h-auto object-contain mb-14"
+            className="w-64 max-w-[80vw] h-auto object-contain mb-14"
           />
 
           <div className="font-upright text-white/90 space-y-8 mb-16 text-base sm:text-lg leading-loose tracking-wide">

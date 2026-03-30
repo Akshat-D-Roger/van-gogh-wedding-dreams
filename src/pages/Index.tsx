@@ -18,7 +18,7 @@ const Index = () => {
   });
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-transparent selection:bg-gold/30 selection:text-gold-light relative">
+    <div ref={containerRef} className="min-h-screen bg-transparent selection:bg-gold/30 selection:text-gold-light relative overflow-x-clip">
       {/* GLOBAL STAR BACKGROUND - Fixed */}
       <div className="fixed inset-0 z-0 pointer-events-none bg-background">
         <StarryBackground />
