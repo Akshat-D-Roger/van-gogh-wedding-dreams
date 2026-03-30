@@ -6,12 +6,12 @@ export const useLenis = () => {
 
     useEffect(() => {
         const lenis = new Lenis({
-            lerp: 0.08,
+            lerp: 0.04,             // How fast scroll animates to target (lower = slower glide)
             smoothWheel: true,
             wheelMultiplier: 0.5,
             syncTouch: true,
-            syncTouchLerp: 0.075,
-            touchMultiplier: 0.8,   // 80% of native speed (was 0.5 = too slow)
+            syncTouchLerp: 0.03,    // How fast touch scroll glides (lower = slower, dreamier)
+            touchMultiplier: 0.9,   // How far each swipe travels
         });
 
         lenisRef.current = lenis;
