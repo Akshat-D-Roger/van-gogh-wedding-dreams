@@ -20,13 +20,13 @@ const events = [
   {
     name: "Varmala",
     date: "Tuesday, April 14th 2026",
-    time: "5:30 PM Onwards",
+    time: "5 PM Onwards",
     description: "The sacred union of two souls",
     theme: "pink",
     atmosphere: "varmala" as const
   },
   {
-    name: "Reception",
+    name: "Gala Dinner",
     date: "Tuesday, April 14th 2026",
     time: "8:00 PM",
     description: "A casual dining celebration with family and friends",
