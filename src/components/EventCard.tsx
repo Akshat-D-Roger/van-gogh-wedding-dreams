@@ -59,11 +59,9 @@ const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow'
     const icon = getEventIcon(title);
     const isDarkCard = theme === "black" || theme === "blue";
     const contentLift = isDarkCard
-        ? "[text-shadow:0_2px_20px_rgba(0,0,0,0.75)]"
-        : "[text-shadow:0_2px_14px_rgba(255,253,245,0.9)]";
-    const iconLift = isDarkCard
-        ? "[filter:drop-shadow(0_6px_28px_rgba(0,0,0,0.85))]"
-        : "[filter:drop-shadow(0_4px_24px_rgba(255,253,245,0.92))]";
+        ? "[text-shadow:0_2px_4px_rgba(0,0,0,0.75)]"
+        : "[text-shadow:0_2px_4px_rgba(255,253,245,0.9)]";
+    const glowColor = isDarkCard ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.6)";
 
     return (
         <motion.div
@@ -90,10 +88,15 @@ const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow'
                         transition={{ duration: 0.8, delay: 0.3 }}
                         className="relative z-30 flex-1 flex items-center justify-center w-full"
                     >
+                        {/* Fake Drop Shadow using mathematically free background CSS Radial Gradients */}
+                        <div 
+                          className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full blur-2xl -z-10"
+                          style={{ background: `radial-gradient(circle, ${glowColor} 0%, transparent 60%)` }}
+                        />
                         <img
                             src={icon}
                             alt={`${title} icon`}
-                            className={`w-72 sm:w-72 md:w-96 lg:w-[500px] h-auto object-contain drop-shadow-2xl ${iconLift}`}
+                            className="w-72 sm:w-72 md:w-96 lg:w-[500px] h-auto object-contain"
                         />
                     </motion.div>
                 )}
@@ -121,16 +124,16 @@ const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow'
                     </div>
                 </div>
 
-                {/* Flower Decorations - Nicer positioning */}
+                {/* Flower Decorations - Highly stripped of CSS drop-shadow filters for mobile battery */}
                 <img
                     src={flowerCorner}
                     alt="Flower decoration"
-                    className="absolute top-0 right-0 w-32 sm:w-56 md:w-80 lg:w-[450px] z-20 drop-shadow-2xl brightness-110 pointer-events-none opacity-90"
+                    className="absolute top-0 right-0 w-32 sm:w-56 md:w-80 lg:w-[450px] z-20 brightness-110 pointer-events-none opacity-90"
                 />
                 <img
                     src={flowerCorner}
                     alt="Flower decoration"
-                    className="absolute bottom-0 left-0 w-32 sm:w-56 md:w-80 lg:w-[450px] z-20 drop-shadow-2xl brightness-110 rotate-180 pointer-events-none opacity-90"
+                    className="absolute bottom-0 left-0 w-32 sm:w-56 md:w-80 lg:w-[450px] z-20 brightness-110 rotate-180 pointer-events-none opacity-90"
                 />
             </div>
         </motion.div>

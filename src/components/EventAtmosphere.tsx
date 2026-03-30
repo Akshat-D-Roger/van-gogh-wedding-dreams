@@ -136,7 +136,6 @@ function VarmalaFlowerShower() {
             height: p.petalH,
             borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
             background: p.gradient,
-            boxShadow: "0 1px 4px rgba(232, 104, 142, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45)",
             '--r-base': `${p.baseRotate}deg`,
             '--r-mid': `${p.baseRotate + 48}deg`,
             '--r-end': `${p.baseRotate + 24}deg`,
