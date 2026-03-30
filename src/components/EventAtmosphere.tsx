@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import confetti from "canvas-confetti";
 
 export type EventAtmosphereVariant = "haldi" | "sangeet" | "varmala" | "reception";
@@ -29,45 +29,11 @@ function HaldiYellowBursts() {
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-      {/* Holi-style color waves — subtle; content stacks above */}
-      <motion.div
-        className="absolute inset-y-0 left-0 w-[58%] max-w-[520px] holi-splash holi-splash--left"
-        initial={false}
-        animate={{
-          opacity: [0.22, 0.52, 0.32, 0.46, 0.24],
-          x: ["-14%", "-2%", "-8%", "0%", "-5%"],
-          scaleY: [0.92, 1.04, 0.97, 1.02, 0.95],
-        }}
-        transition={{ duration: 2.85, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute inset-y-0 right-0 w-[58%] max-w-[520px] holi-splash holi-splash--right"
-        initial={false}
-        animate={{
-          opacity: [0.2, 0.5, 0.3, 0.44, 0.22],
-          x: ["14%", "2%", "8%", "0%", "5%"],
-          scaleY: [0.95, 1.06, 0.98, 1.03, 0.96],
-        }}
-        transition={{ duration: 2.85, repeat: Infinity, ease: "easeInOut", delay: 0.45 }}
-      />
-      <motion.div
-        className="absolute inset-x-0 top-0 h-[42%] max-h-[320px] holi-splash holi-splash--top"
-        initial={false}
-        animate={{
-          opacity: [0.16, 0.44, 0.26, 0.4, 0.18],
-          y: ["-18%", "-4%", "-12%", "-2%", "-10%"],
-        }}
-        transition={{ duration: 3.1, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
-      />
-      <motion.div
-        className="absolute inset-x-0 bottom-0 h-[38%] max-h-[280px] holi-splash holi-splash--bottom"
-        initial={false}
-        animate={{
-          opacity: [0.15, 0.42, 0.24, 0.38, 0.16],
-          y: ["18%", "4%", "12%", "2%", "10%"],
-        }}
-        transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 1.35 }}
-      />
+      {/* Holi-style color waves — CSS Keyframe Native */}
+      <div className="absolute inset-y-0 left-0 w-[58%] max-w-[520px] holi-splash holi-splash--left animate-haldi-left" />
+      <div className="absolute inset-y-0 right-0 w-[58%] max-w-[520px] holi-splash holi-splash--right animate-haldi-right" />
+      <div className="absolute inset-x-0 top-0 h-[42%] max-h-[320px] holi-splash holi-splash--top animate-haldi-top" />
+      <div className="absolute inset-x-0 bottom-0 h-[38%] max-h-[280px] holi-splash holi-splash--bottom animate-haldi-bottom" />
 
       {rings.map((ring, i) => (
         <div
@@ -159,7 +125,7 @@ function VarmalaFlowerShower() {
   return (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
       {petals.map((p) => (
-        <motion.div
+        <div
           key={p.id}
           className="absolute select-none opacity-75 will-change-transform"
           style={{
@@ -170,21 +136,14 @@ function VarmalaFlowerShower() {
             borderRadius: "50% 50% 50% 50% / 60% 60% 40% 40%",
             background: p.gradient,
             boxShadow: "0 1px 4px rgba(232, 104, 142, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45)",
-          }}
-          initial={{ opacity: 0, scale: p.scale }}
-          animate={{
-            y: ["0vh", "118vh"],
-            x: [0, p.drift * 0.55],
-            opacity: [0, 0.78, 0.72, 0.5, 0],
-            rotate: [p.baseRotate, p.baseRotate + 48, p.baseRotate - 32, p.baseRotate + 24],
-            scale: p.scale,
-          }}
-          transition={{
-            duration: p.duration,
-            delay: p.delay,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+            '--r-base': `${p.baseRotate}deg`,
+            '--r-mid': `${p.baseRotate + 48}deg`,
+            '--r-end': `${p.baseRotate + 24}deg`,
+            '--p-scale': p.scale,
+            '--drift-mid': `${p.drift * 0.25}px`, // mapped interpolation
+            '--drift-max': `${p.drift * 0.55}px`,
+            animation: `varmala-petal-fall ${p.duration}s linear -${p.delay}s infinite`
+          } as React.CSSProperties}
           aria-hidden
         />
       ))}
@@ -192,69 +151,24 @@ function VarmalaFlowerShower() {
   );
 }
 
-type PaparazziFlash = { id: number; left: string; top: string; size: number };
-
 function ReceptionPaparazziFlashes() {
-  const [flashes, setFlashes] = useState<PaparazziFlash[]>([]);
-  const nextId = useRef(0);
-
-  useEffect(() => {
-    let cancelled = false;
-    let timeoutId: number;
-
-    const removeFlash = (id: number) => {
-      if (cancelled) return;
-      setFlashes((prev) => prev.filter((f) => f.id !== id));
-    };
-
-    const spawnFlash = () => {
-      if (cancelled) return;
-      const id = ++nextId.current;
-      const left = `${6 + Math.random() * 88}%`;
-      const top = `${6 + Math.random() * 88}%`;
-      const size = 100 + Math.random() * 260;
-      setFlashes((prev) => [...prev.slice(-18), { id, left, top, size }]);
-      window.setTimeout(() => removeFlash(id), 160 + Math.random() * 120);
-    };
-
-    const paparazziBurst = () => {
-      if (cancelled) return;
-      spawnFlash();
-      if (Math.random() < 0.45) {
-        window.setTimeout(() => {
-          if (!cancelled) spawnFlash();
-        }, 35 + Math.random() * 90);
-      }
-      if (Math.random() < 0.3) {
-        window.setTimeout(() => {
-          if (!cancelled) spawnFlash();
-        }, 90 + Math.random() * 110);
-      }
-    };
-
-    const tick = () => {
-      if (cancelled) return;
-      if (Math.random() < 0.22) {
-        paparazziBurst();
-      } else {
-        spawnFlash();
-      }
-      timeoutId = window.setTimeout(tick, 300 + Math.random() * 800);
-    };
-
-    paparazziBurst();
-    timeoutId = window.setTimeout(tick, 400);
-
-    return () => {
-      cancelled = true;
-      window.clearTimeout(timeoutId);
-    };
-  }, []);
+  const flashes = useMemo(
+    () =>
+      Array.from({ length: 24 }, (_, i) => ({
+        id: i,
+        left: `${6 + Math.random() * 88}%`,
+        top: `${6 + Math.random() * 88}%`,
+        size: 100 + Math.random() * 260,
+        delay: Math.random() * 5, // random start offset up to 5s
+        duration: 3 + Math.random() * 4, // chaotic 3s to 7s cycle time
+      })),
+    []
+  );
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       {flashes.map((f) => (
-        <motion.div
+        <div
           key={f.id}
           className="absolute reception-paparazzi-flash"
           style={{
@@ -264,13 +178,8 @@ function ReceptionPaparazziFlashes() {
             height: f.size,
             marginLeft: -f.size / 2,
             marginTop: -f.size / 2,
+            animation: `paparazzi-flash-burst ${f.duration}s ease-in-out -${f.delay}s infinite`
           }}
-          initial={{ opacity: 0, scale: 0.2 }}
-          animate={{
-            opacity: [0, 1, 0.92, 0.55, 0],
-            scale: [0.35, 1.15, 1.45, 1.05, 0.85],
-          }}
-          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
         />
       ))}
     </div>
