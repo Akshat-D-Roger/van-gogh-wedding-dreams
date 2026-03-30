@@ -5,6 +5,7 @@ import PalaceSection from "@/components/PalaceSection";
 import EventsSection from "@/components/EventsSection";
 import SeeTheRoute from "@/components/SeeTheRoute";
 import CoupleSection from "@/components/CoupleSection";
+import WarmRegardsSection from "@/components/WarmRegardsSection";
 import { LanternLayer } from "@/components/LanternLayer";
 import { useLenis } from "@/hooks/useLenis";
 
@@ -70,6 +71,7 @@ const Index = () => {
           {/* Couple Section - Overlaps the sticky map section */}
           <div className="relative z-20 -mt-[100vh]">
             <CoupleSection />
+            <WarmRegardsSection />
           </div>
         </div>
       </div>
