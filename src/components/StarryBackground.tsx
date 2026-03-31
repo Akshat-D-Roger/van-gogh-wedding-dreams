@@ -1,5 +1,5 @@
 import { useMemo, memo } from "react";
-import starrySky from "@/assets/Sky.png";
+import starrySky from "@/assets/Sky.jpg";
 
 const StarryBackground = memo(({ active = true }: { active?: boolean }) => {
   // Memoize star positions so they don't re-randomize on re-render
@@ -11,7 +11,7 @@ const StarryBackground = memo(({ active = true }: { active?: boolean }) => {
       duration: 2 + (i % 5) * 0.6,            // 2s - 4.4s
       delay: (i % 7) * 0.3,                   // stagger
     }))
-  , []);
+    , []);
 
   return (
     <div className={`absolute inset-0 overflow-hidden ${!active ? "paused-animation" : ""}`}>

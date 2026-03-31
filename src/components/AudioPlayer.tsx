@@ -31,7 +31,7 @@ const AudioPlayer = ({ isUnlocked }: AudioPlayerProps) => {
         ref={audioRef} 
         loop 
         preload="auto"
-        src="/wedding-audio.mp3" 
+        src="/song.mp3" 
       />
 
       {/* Floating mute/unmute control bound to the top right entirely independent of scroll */}

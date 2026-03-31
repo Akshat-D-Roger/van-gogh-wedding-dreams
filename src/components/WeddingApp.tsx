@@ -7,6 +7,7 @@ import SeeTheRoute from "@/components/SeeTheRoute";
 import CoupleSection from "@/components/CoupleSection";
 import WarmRegardsSection from "@/components/WarmRegardsSection";
 import { LanternLayer } from "@/components/LanternLayer";
+import { CinematicRecorder } from "@/components/CinematicRecorder";
 
 const WeddingApp = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,7 +31,8 @@ const WeddingApp = () => {
       </div>
 
       <div className="relative z-10 w-full">
-        <div ref={topSectionRef}>
+        <CinematicRecorder />
+        <div ref={topSectionRef} className="snap-start">
           {/* LANTERNS LAYER - Synced with Palace Entrance */}
           <LanternLayer scrollYProgress={scrollYProgress} active={isTopInView} />
 

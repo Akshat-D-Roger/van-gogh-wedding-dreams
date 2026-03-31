@@ -89,9 +89,9 @@ const EventCard = ({ title, date, time, description, delay = 0, theme = 'yellow'
                         className="relative z-30 flex-1 flex items-center justify-center w-full"
                     >
                         {/* Fake Drop Shadow using mathematically free background CSS Radial Gradients */}
-                        <div 
-                          className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full blur-2xl -z-10"
-                          style={{ background: `radial-gradient(circle, ${glowColor} 0%, transparent 60%)` }}
+                        <div
+                            className="absolute w-64 h-64 md:w-96 md:h-96 rounded-full blur-2xl -z-10"
+                            style={{ background: `radial-gradient(circle, ${glowColor} 0%, transparent 60%)` }}
                         />
                         <img
                             src={icon}

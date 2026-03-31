@@ -2,18 +2,18 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import frameImg from "@/assets/PictureFrame.png";
-import pinkTexture from "@/assets/PinkTexture2.jpeg";
+import pinkTexture from "@/assets/PinkTexture2.jpg";
 
 // Importing images manually - avoiding glob for better control/compatibility
-import img1 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.23 PM.jpeg";
-import img2 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.23 PM (1).jpeg";
-import img3 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.24 PM.jpeg";
-import img4 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.24 PM (1).jpeg";
-import img5 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.25 PM.jpeg";
-import img6 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.25 PM (1).jpeg";
-import img7 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.26 PM.jpeg";
-import img11 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.27 PM (2).jpeg";
-import img12 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.45.09 PM.jpeg";
+import img1 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.23 PM.jpg";
+import img2 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.23 PM (1).jpg";
+import img3 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.24 PM.jpg";
+import img4 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.24 PM (1).jpg";
+import img5 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.25 PM.jpg";
+import img6 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.25 PM (1).jpg";
+import img7 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.26 PM.jpg";
+import img11 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.44.27 PM (2).jpg";
+import img12 from "@/assets/Couple Pics/WhatsApp Image 2026-01-05 at 8.45.09 PM.jpg";
 
 const images = [img1, img2, img3, img4, img5, img6, img7, img11, img12];
 

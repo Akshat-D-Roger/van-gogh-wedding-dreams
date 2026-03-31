@@ -1,7 +1,7 @@
 import goldenPalace from "@/assets/Fort.png";
 import waterReflection from "@/assets/Water.jpeg";
-import waterReflectionMiddle from "@/assets/Water2.jpeg";
-import waterReflection2 from "@/assets/WaterExtended.jpeg";
+import waterReflectionMiddle from "@/assets/Water2.jpg";
+import waterReflection2 from "@/assets/WaterExtended.jpg";
 import ganesha from "@/assets/Ganesha.png";
 import varmalaImg from "@/assets/VarmalaGhibli.png";
 import { memo } from "react";
